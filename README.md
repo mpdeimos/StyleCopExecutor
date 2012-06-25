@@ -13,4 +13,4 @@ License
 
 Microsoft Public License (MS-PL)
 
-[See License](LICENSE.md)
+[See License](https://github.com/mpdeimos/StyleCopExecutor/blob/master/LICENSE.md)
