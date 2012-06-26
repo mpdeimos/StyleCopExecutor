@@ -37,6 +37,9 @@ namespace StyleCopExecutor
 				case "-f":
 					files.Add(arg);
 					break;
+				case "-l":
+					files.AddRange(System.IO.File.ReadLines(arg));
+					break;
 				}
 			}
 			
@@ -52,9 +55,11 @@ namespace StyleCopExecutor
 				System.IO.Directory.GetCurrentDirectory(),
 				new Configuration(null));
 			
+			files.RemoveAll(file => System.String.IsNullOrEmpty(file));
+			
 			foreach(string file in files)
 			{
-				var filepath = file;
+				var filepath = file.Trim();
 				if (workingDirectory != null)
 				{
 					filepath = System.IO.Path.Combine(workingDirectory, file);
