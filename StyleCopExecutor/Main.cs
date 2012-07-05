@@ -11,20 +11,17 @@ namespace StyleCopExecutor
 			string settingsFile = null;
 			string outputFile = null;
 			string workingDirectory = null;
-			List<string> files = new List<string>();
+			List<string> files = new List<string> ();
 			
 			string mode = null;
-			foreach(string _arg in args)
-			{
-				var arg = _arg.Trim();
-				if (arg.StartsWith("-"))
-				{
+			foreach (string _arg in args) {
+				var arg = _arg.Trim ();
+				if (arg.StartsWith ("-")) {
 					mode = arg;
 					continue;
 				}
 				
-				switch(mode)
-				{
+				switch (mode) {
 				case "-o":
 					outputFile = arg;
 					break;
@@ -35,39 +32,43 @@ namespace StyleCopExecutor
 					workingDirectory = arg;
 					break;
 				case "-f":
-					files.Add(arg);
+					files.Add (arg);
 					break;
 				case "-l":
-					files.AddRange(System.IO.File.ReadLines(arg));
+					files.AddRange (System.IO.File.ReadLines (arg));
 					break;
 				}
 			}
-			
-			StyleCopConsole console = new StyleCopConsole(
+		
+			StyleCopConsole console = new StyleCopConsole (
 				settingsFile,
 				false,
 				outputFile,
 				null,
 				true);
 		
-			CodeProject project = new CodeProject(
+			CodeProject project = new CodeProject (
 				0,
-				System.IO.Directory.GetCurrentDirectory(),
-				new Configuration(null));
+				System.IO.Directory.GetCurrentDirectory (),
+				new Configuration (null));
 			
-			files.RemoveAll(file => System.String.IsNullOrEmpty(file));
+			files.RemoveAll (file => System.String.IsNullOrEmpty (file));
 			
-			foreach(string file in files)
-			{
-				var filepath = file.Trim();
-				if (workingDirectory != null)
-				{
-					filepath = System.IO.Path.Combine(workingDirectory, file);
+			foreach (string file in files) {
+				var filepath = file.Trim ();
+				if (workingDirectory != null) {
+					filepath = System.IO.Path.Combine (workingDirectory, file);
 				}
-				console.Core.Environment.AddSourceCode(project, filepath, null);
+				
+				if (!System.IO.File.Exists (filepath)) {
+					System.Console.Error.WriteLine ("File not found: " + filepath);
+					continue;
+				}
+				
+				console.Core.Environment.AddSourceCode (project, filepath, null);
 			}
-
-			console.Start(new[] { project }, true);
+			
+			console.Start (new[] { project }, true);
 		}
 	}
 }

@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D156F123-F913-481D-88A5-C0387F85F395}</ProjectGuid>
+    <ProjectGuid>{56B50BF4-2A94-49B3-934C-9999D07D16EA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>StyleCopExecutor</RootNamespace>
-    <AssemblyName>StyleCopExecutor</AssemblyName>
+    <RootNamespace>PlayGround</RootNamespace>
+    <AssemblyName>PlayGround</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,7 +20,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <Externalconsole>true</Externalconsole>
-    <Commandlineparameters>-s /home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/test-data/Settings.StyleCop -o /home/mpdeimos/sc.result -l /home/mpdeimos/workspaces/dotnet/StyleCopExecutor/test.ls</Commandlineparameters>
+    <Commandlineparameters>/home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/test-data/head.zip!arch/2.architecture</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>none</DebugType>
@@ -33,19 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="StyleCop.CSharp">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop.CSharp.Rules">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.CSharp.Rules.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop.Internal">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.Internal.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib" />
     <Reference Include="Ionic.Zip">
       <HintPath>..\Lib\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -53,9 +40,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="ZipCodeFile.cs" />
-    <Compile Include="StyleCopConsole.cs" />
-    <Compile Include="ZipFileEnvironment.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
