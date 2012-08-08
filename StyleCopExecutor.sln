@@ -3,16 +3,34 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopExecutor", "StyleCopExecutor\StyleCopExecutor.csproj", "{D156F123-F913-481D-88A5-C0387F85F395}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCop", "..\stylecop\Project\Src\StyleCop\StyleCop.csproj", "{AF7A7FEA-C07B-456A-B072-C7E795A6CBD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpAnalyzers", "..\stylecop\Project\Src\AddIns\CSharp\Analyzers\CSharpAnalyzers.csproj", "{DE988D84-EAF4-4FD7-A33A-9EE0E6DE752C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpParser", "..\stylecop\Project\Src\AddIns\CSharp\Parser\CSharpParser.csproj", "{C173ACF5-2CE5-4771-83A4-D01453C8CB09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF7A7FEA-C07B-456A-B072-C7E795A6CBD4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AF7A7FEA-C07B-456A-B072-C7E795A6CBD4}.Debug|x86.Build.0 = Debug|Any CPU
+		{AF7A7FEA-C07B-456A-B072-C7E795A6CBD4}.Release|x86.ActiveCfg = Release|Any CPU
+		{AF7A7FEA-C07B-456A-B072-C7E795A6CBD4}.Release|x86.Build.0 = Release|Any CPU
+		{C173ACF5-2CE5-4771-83A4-D01453C8CB09}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C173ACF5-2CE5-4771-83A4-D01453C8CB09}.Debug|x86.Build.0 = Debug|Any CPU
+		{C173ACF5-2CE5-4771-83A4-D01453C8CB09}.Release|x86.ActiveCfg = Release|Any CPU
+		{C173ACF5-2CE5-4771-83A4-D01453C8CB09}.Release|x86.Build.0 = Release|Any CPU
 		{D156F123-F913-481D-88A5-C0387F85F395}.Debug|x86.ActiveCfg = Debug|x86
 		{D156F123-F913-481D-88A5-C0387F85F395}.Debug|x86.Build.0 = Debug|x86
 		{D156F123-F913-481D-88A5-C0387F85F395}.Release|x86.ActiveCfg = Release|x86
 		{D156F123-F913-481D-88A5-C0387F85F395}.Release|x86.Build.0 = Release|x86
+		{DE988D84-EAF4-4FD7-A33A-9EE0E6DE752C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE988D84-EAF4-4FD7-A33A-9EE0E6DE752C}.Debug|x86.Build.0 = Debug|Any CPU
+		{DE988D84-EAF4-4FD7-A33A-9EE0E6DE752C}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE988D84-EAF4-4FD7-A33A-9EE0E6DE752C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = StyleCopExecutor\StyleCopExecutor.csproj
@@ -20,5 +38,19 @@ Global
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
 		$1.ResourceNamePolicy = FileFormatDefault
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/x-csharp
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 120
+		$4.TabWidth = 4
+		$4.EolMarker = Windows
+		$4.inheritsSet = Mono
+		$4.inheritsScope = text/plain
+		$4.scope = text/plain
 	EndGlobalSection
 EndGlobal

@@ -19,8 +19,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <Externalconsole>true</Externalconsole>
-    <Commandlineparameters>-s /home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/test-data/Settings.StyleCop -o /home/mpdeimos/sc.result -l /home/mpdeimos/workspaces/dotnet/StyleCopExecutor/test.ls</Commandlineparameters>
+    <Commandlineparameters>-s /home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/resources/Settings.StyleCop -l /home/mpdeimos/cqse/data/dashboard-testdata/head/SystemtestSolution/files.lst -o /home/mpdeimos/cqse/data/dashboard-testdata/head/SystemtestSolution/output.xml</Commandlineparameters>
+    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>none</DebugType>
@@ -29,26 +29,29 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <Externalconsole>true</Externalconsole>
+    <ConsolePause>false</ConsolePause>
+    <Commandlineparameters>-s /home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/resources/Settings.StyleCop -l /home/mpdeimos/cqse/data/dashboard-testdata/head/SystemtestSolution/files.lst -o /home/mpdeimos/cqse/data/dashboard-testdata/head/SystemtestSolution/output.xml</Commandlineparameters>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="StyleCop.CSharp">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop.CSharp.Rules">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.CSharp.Rules.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop.Internal">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.Internal.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\stylecop\Project\Src\AddIns\CSharp\Analyzers\CSharpAnalyzers.csproj">
+      <Project>{DE988D84-EAF4-4FD7-A33A-9EE0E6DE752C}</Project>
+      <Name>CSharpAnalyzers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\stylecop\Project\Src\AddIns\CSharp\Parser\CSharpParser.csproj">
+      <Project>{C173ACF5-2CE5-4771-83A4-D01453C8CB09}</Project>
+      <Name>CSharpParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\stylecop\Project\Src\StyleCop\StyleCop.csproj">
+      <Project>{AF7A7FEA-C07B-456A-B072-C7E795A6CBD4}</Project>
+      <Name>StyleCop</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
