@@ -10,8 +10,8 @@ namespace StyleCopExecutor
 		private string zip;
 		private string zipEntryName;
 		
-		public ZipCodeFile (string zip, string zipEntryName, string path, CodeProject project, SourceParser parser, IEnumerable<Configuration> configurations)
-            : base(path, project, parser, configurations)
+		public ZipCodeFile (string zip, string zipEntryName, string path, CodeProject project, SourceParser parser)
+            : base(path, project, parser)
 		{
 			this.zip = zip;
 			this.zipEntryName = zipEntryName;
@@ -22,6 +22,7 @@ namespace StyleCopExecutor
 		/// </summary>
 		public override bool Exists {
 			get {
+				Console.WriteLine(" ==== Checking existence of " + this.FullPathName);
 				ZipFile zipFile = CodeFileFactory.Instance ().GetCachedZipFile (zip);
 				return !string.IsNullOrEmpty (this.Path) && zipFile.ContainsEntry (this.zipEntryName);
 			}
@@ -30,8 +31,21 @@ namespace StyleCopExecutor
 		public override System.IO.TextReader Read ()
 		{
 			ZipFile zipFile = CodeFileFactory.Instance ().GetCachedZipFile (zip);
-			ZipEntry entry = zipFile [zipEntryName];
-			return new System.IO.StreamReader (entry.OpenReader ());
+			Console.WriteLine(" ==== Reading " + this.FullPathName);
+			
+			var memoryStream = new System.IO.MemoryStream();
+			lock(zipFile)
+			{
+				ZipEntry entry = zipFile [zipEntryName];
+				entry.Extract(memoryStream);
+				
+				
+			}
+			memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+			Console.WriteLine(new System.IO.StreamReader(memoryStream).ReadLine());
+			
+			memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+			return new System.IO.StreamReader (memoryStream);
 		}
 	}
 }

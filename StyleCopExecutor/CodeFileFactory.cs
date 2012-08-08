@@ -23,9 +23,8 @@ namespace StyleCopExecutor
 			return instance;
 		}
 		
-		public CodeFile GetCodeFile (string file, CodeProject project)
+		/*public CodeFile GetCodeFile (string file, CodeProject project)
 		{
-			SourceParser parser = null;
 			IEnumerable<Configuration> configurations = null;
 			
             // Get the parsers for this file based on its extension.
@@ -47,7 +46,7 @@ namespace StyleCopExecutor
 			}
 		}
 		
-		private CreateCodeFile (string file, CodeProject project, SourceParser parser, object context)
+		private CodeFile CreateCodeFile (string file, CodeProject project, SourceParser parser, object context)
 		{
 			String[] parts = file.Split ('!');
 			if (parts.Length == 2) {
@@ -61,10 +60,13 @@ namespace StyleCopExecutor
 			}
 			
 			return new CodeFile (file, project, parser, configurations);
-		}
+		}*/
 		
 		public ZipFile GetCachedZipFile (string zipFile)
 		{
+			if (!zipFiles.ContainsKey (zipFile)) {
+				zipFiles [zipFile] = ZipFile.Read (zipFile);
+			}
 			return zipFiles [zipFile];
 		}
 	}

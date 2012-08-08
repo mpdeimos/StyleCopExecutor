@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{D156F123-F913-481D-88A5-C0387F85F395}</ProjectGuid>
@@ -20,32 +20,27 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <Externalconsole>true</Externalconsole>
-    <Commandlineparameters>-s /home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/test-data/Settings.StyleCop -o /home/mpdeimos/sc.result -l /home/mpdeimos/workspaces/dotnet/StyleCopExecutor/test.ls</Commandlineparameters>
+    <Commandlineparameters>-s /home/mpdeimos/cqse/svn/conqat-prop/engine/eu.cqse.conqat.engine.dotnet/resources/StyleCopExecutor/StyleCopExecutor.exe -s /home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/resources/Settings.StyleCop -l /home/mpdeimos/workspaces/dotnet/StyleCopExecutor/StyleCopExecutor/test.lst -o /home/mpdeimos/cqse/sc.xml</Commandlineparameters>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <Commandlineparameters>-s /home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/test-data/Settings.StyleCop -o /home/mpdeimos/sc.result -l /home/mpdeimos/workspaces/dotnet/StyleCopExecutor/test.ls</Commandlineparameters>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(SAAssemblyOriginatorKeyFile)</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <Externalconsole>true</Externalconsole>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(SAAssemblyOriginatorKeyFile)</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="StyleCop.CSharp">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop.CSharp.Rules">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.CSharp.Rules.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop.Internal">
-      <HintPath>..\..\stylecop\Tools\StyleCop\v4.7\StyleCop.Internal.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib" />
     <Reference Include="Ionic.Zip">
       <HintPath>..\Lib\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -56,6 +51,28 @@
     <Compile Include="ZipCodeFile.cs" />
     <Compile Include="StyleCopConsole.cs" />
     <Compile Include="ZipFileEnvironment.cs" />
+    <Compile Include="CodeFileFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\stylecop\Project\Src\AddIns\CSharp\Analyzers\CSharpAnalyzers.csproj">
+      <Project>{DE988D84-EAF4-4FD7-A33A-9EE0E6DE752C}</Project>
+      <Name>CSharpAnalyzers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\stylecop\Project\Src\AddIns\CSharp\Parser\CSharpParser.csproj">
+      <Project>{C173ACF5-2CE5-4771-83A4-D01453C8CB09}</Project>
+      <Name>CSharpParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\stylecop\Project\Test\AddIns\CSharp\Parser\CSharpParserTestRules\CSharpParserTestRules.csproj">
+      <Project>{40EDAB29-01CA-4135-A330-E63F0E99D9FF}</Project>
+      <Name>CSharpParserTestRules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\stylecop\Project\Src\StyleCop\StyleCop.csproj">
+      <Project>{AF7A7FEA-C07B-456A-B072-C7E795A6CBD4}</Project>
+      <Name>StyleCop</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.lst" />
+  </ItemGroup>
 </Project>

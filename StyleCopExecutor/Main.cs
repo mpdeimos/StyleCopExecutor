@@ -1,5 +1,4 @@
 using System;
-using StyleCop;
 using System.Collections.Generic;
 
 namespace StyleCopExecutor
@@ -46,11 +45,15 @@ namespace StyleCopExecutor
 				outputFile,
 				null,
 				true);
+			
+			Console.WriteLine(console);
+			Console.WriteLine(console.Core);
+			Console.WriteLine(console.Core.Environment);
 		
-			CodeProject project = new CodeProject (
+			StyleCop.CodeProject project = new StyleCop.CodeProject (
 				0,
 				System.IO.Directory.GetCurrentDirectory (),
-				new Configuration (null));
+				new StyleCop.Configuration (null));
 			
 			files.RemoveAll (file => System.String.IsNullOrEmpty (file));
 			
@@ -60,10 +63,12 @@ namespace StyleCopExecutor
 					filepath = System.IO.Path.Combine (workingDirectory, file);
 				}
 				
-				if (!System.IO.File.Exists (filepath)) {
+				/*if (!System.IO.File.Exists (filepath)) {
 					System.Console.Error.WriteLine ("File not found: " + filepath);
 					continue;
-				}
+				}*/
+				
+				Console.Out.WriteLine(" ==== Adding file " + filepath);
 				
 				console.Core.Environment.AddSourceCode (project, filepath, null);
 			}
