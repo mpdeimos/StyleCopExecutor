@@ -11,33 +11,40 @@
     <AssemblyName>StyleCopExecutor</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <Commandlineparameters>-s /home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/resources/Settings.StyleCop -l /home/mpdeimos/cqse/data/dashboard-testdata/head/SystemtestSolution/files.lst -o /home/mpdeimos/cqse/data/dashboard-testdata/head/SystemtestSolution/output.xml</Commandlineparameters>
-    <ConsolePause>false</ConsolePause>
+    <Commandlineparameters>-s Settings.StyleCop -l src.lst</Commandlineparameters>
+    <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <ConsolePause>false</ConsolePause>
-    <Commandlineparameters>-s /home/mpdeimos/cqse/svn/conqat-prop/engine/com.munichre.conqat.engine/resources/Settings.StyleCop -l /home/mpdeimos/cqse/data/dashboard-testdata/head/SystemtestSolution/files.lst -o /home/mpdeimos/cqse/data/dashboard-testdata/head/SystemtestSolution/output.xml</Commandlineparameters>
+    <ConsolePause>False</ConsolePause>
+    <Commandlineparameters>-s Settings.StyleCop -l src.lst</Commandlineparameters>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\Lib\Ionic.Zip.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="StyleCopConsole.cs" />
+    <Compile Include="ZipFileEnvironment.cs" />
+    <Compile Include="CodeFileFactory.cs" />
+    <Compile Include="ZipCodeFile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

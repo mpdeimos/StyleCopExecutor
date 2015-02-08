@@ -1,5 +1,4 @@
 using System;
-using StyleCop;
 using System.Collections.Generic;
 
 namespace StyleCopExecutor
@@ -47,10 +46,10 @@ namespace StyleCopExecutor
 				null,
 				true);
 		
-			CodeProject project = new CodeProject (
+			StyleCop.CodeProject project = new StyleCop.CodeProject (
 				0,
 				System.IO.Directory.GetCurrentDirectory (),
-				new Configuration (null));
+				new StyleCop.Configuration (null));
 			
 			files.RemoveAll (file => System.String.IsNullOrEmpty (file));
 			
@@ -74,7 +73,7 @@ namespace StyleCopExecutor
 		/// </summary>
 		private static void OnOutputGenerated (
 			object sender,
-			OutputEventArgs e)
+			StyleCop.OutputEventArgs e)
 		{
 			//Console.WriteLine (e.Output);
 		}
@@ -84,7 +83,7 @@ namespace StyleCopExecutor
 		/// </summary>
 		private static void OnViolationEncountered (
 			object sender,
-			ViolationEventArgs e)
+			StyleCop.ViolationEventArgs e)
 		{
 			Console.WriteLine (
 				"{0}: {1}",
